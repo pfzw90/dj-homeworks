@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-
+    <link rel="stylesheet" href="{% static 'css/inflation.css' %}">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
@@ -17,8 +17,34 @@
       <div class="row">
         <h1 class="col s12">Инфляция в России</h1>
         <div class="col s12 m8">
-        
-        <!-- Ваша логика -->
+
+        <table class = 'inflation'>
+            <tr>
+                {% for header in headers %}
+                    {% if header %}<th>{{header}}</th> {% endif %}
+                {% endfor %}
+            </tr>
+            <tbody>
+                {% for year, values in contents.items %}
+                    <tr>
+                        <td>{{ year }}</td>
+                    {% for value in values%}
+                        {% if not forloop.last %}
+                            {% if value %}
+                                {% if value < 0 %}<td class="fall">
+                                {% elif value >= 1 and value < 2 %}<td class="raise_grade_1">
+                                {% elif value >= 2 and value < 5 %}<td class="raise_grade_2">
+                                {% elif value >= 5 %}<td class="raise_grade_3">
+                                {% else %}<td>{% endif %}{{ value }}</td>
+                            {% else %}<td>-</td>{% endif %}
+                        {% else %}
+                            <td class="summary">{{ value }}</td>
+                        {% endif %}
+                    {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
         </div>
       </div>

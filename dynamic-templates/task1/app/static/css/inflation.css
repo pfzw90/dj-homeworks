@@ -1,0 +1,23 @@
+.inflation th {
+    font-weight: bold;
+}
+
+.summary {
+    background: #868686;
+}
+
+.raise_grade_1 {
+    background: rgba(254,0,46,0.1);
+}
+
+.raise_grade_2 {
+    background: rgba(255,0,46,0.5)
+}
+
+.raise_grade_2 {
+    background: rgba(255,0,46,0.75)
+}
+
+.fall {
+    background: #269251;
+}
