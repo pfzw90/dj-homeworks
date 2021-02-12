@@ -8,6 +8,11 @@
             <h1>Телефон</h1>
         </div>
         <div class="content">
+        {% include "phone-card.html" with image=phone.image name=phone.name price=phone.price slug=phone.slug%}
+            <ul class = 'phone-details'>
+                <li><span>Дата выпуска: {{ phone.release_date }}</span></li>
+                <li><span>LTE: {% if phone.lte_exists %}есь {% else %} нетю{% endif %}</span></li>
+            </ul>
 
         </div>
     </div>

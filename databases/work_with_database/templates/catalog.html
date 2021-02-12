@@ -9,11 +9,23 @@
         </div>
 
         <div class="sort-block">
-            {# Здесь должен быть раздел с сортировкой #}
+            <span class="sort-item">Сортировать по:</span>
+            <a class="sort-item" href='/catalog/?sort=name'>Названию</a>
+            <a class="sort-item" href ='/catalog/?sort=price'>Цене по возрастанию</a>
+            <a class="sort-item" href ='/catalog/?sort=price&reversed=True'>Цене по убыванию</a>
         </div>
 
         <div class="content">
-            {# Здесь должен отображаться каталог с телефонами #}
+        {% if reversed %}
+            {% for phone in phones|dictsortreversed:sort_option %}
+                {% include "phone-card.html" with image=phone.image name=phone.name price=phone.price slug=phone.slug%}
+            {% endfor %}
+        {% else %}
+        {% for phone in phones %}
+            {% include "phone-card.html" with image=phone.image name=phone.name price=phone.price slug=phone.slug%}
+        {% endfor %}
+        {% endif %}
+
         </div>
     </div>
 {% endblock %}

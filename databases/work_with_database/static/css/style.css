@@ -1,18 +1,39 @@
+.content {
+    display: flex;
+    margin-top:30px;
+    justify-content: space-between;
+}
+
 .header {
     margin-top: 30px;
     margin-bottom: 50px;
 }
 
 .phone {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
 }
 
 .sort-block .sort-item {
     padding-right: 20px;
 }
 
+.sort-block .sort-item:hover {
+    text-decoration: none;
+}
+
 .price {
     font-weight: bold;
+}
+
+.phone-title {
+    text-transform: uppercase;
+}
+
+.phone-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    list-style-image: unset;
 }
 

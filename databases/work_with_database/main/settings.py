@@ -1,3 +1,4 @@
+
 """
 Django settings for main project.
 
@@ -54,6 +55,8 @@ DATABASES = {
         'NAME': 'netology_import_phones',
         'HOST': '127.0.0.1',
         'PORT': '5432',
+        'USER': 'postgres',
+        'PASSWORD': 'admin'
     }
 }
 
@@ -113,6 +116,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
