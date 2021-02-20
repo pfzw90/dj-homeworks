@@ -1,11 +1,14 @@
 from rest_framework.viewsets import ModelViewSet
 
-
-class ProjectViewSet(ModelViewSet):
-    """ViewSet для проекта."""
-    # TODO: добавьте конфигурацию для объекта
+from .models import Project, Measurement
+from .serializers import MeasurementSerializer, ProjectSerializer
 
 
-class MeasurementViewSet(ModelViewSet):
-    """ViewSet для измерения."""
-    # TODO: добавьте конфигурацию для измерения
+class ProjectsViewSet(ModelViewSet):
+    serializer_class = ProjectSerializer
+    queryset = Project.objects.all()
+
+
+class MeasurementsViewSet(ModelViewSet):
+    serializer_class = MeasurementSerializer
+    queryset = Measurement.objects.all()
