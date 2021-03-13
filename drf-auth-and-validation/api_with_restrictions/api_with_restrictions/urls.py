@@ -13,16 +13,24 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter
+from advertisements.views import AdvertisementViewSet
+from rest_framework.authtoken import views
 
 router = DefaultRouter()
 # TODO: подключите `AdvertisementViewSet`
-
+router.register('advertisements', AdvertisementViewSet, basename='api')
 
 urlpatterns = [
     path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
 ]
+
+urlpatterns += [
+    url(r'^api-token-auth/', views.obtain_auth_token)
+]
+
